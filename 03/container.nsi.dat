@@ -5,17 +5,19 @@ PROBLEM_DEFINITION
   TEMPORAL_DERIVATIVES:     On  
   CONVECTIVE_TERM:          On  
   LEVEL:                    On
-  VISCOUS_TERM:             LAPLA
-  GRAVITY:                  NORM: 8.0e-4,GX:0.0,GY:-1.0,GZ:0.0  
+  VISCOUS_TERM:             FULL
+  GRAVITY:                  NORM: 1.0,GX:0.0,GY:0.0,GZ:-1.0
+  BOUSSINESQ: ON, BETA = 0.0033, TR = 303.15, G = 9.81
+  ROTATION_FUNCTION: 0.0, 1.0, -1.0, 3.14159, 0.0, 1.0, CONSTANT
+  AXES_ROTATION: NORM= 6.28318530718   OX=0.0, OY=0.0, OZ=1.0
+  CENTER_ROTATION= 0.0, 0.0, 0.05
   TURBULENCE_COUPLING:      OFF
   SURFACE_TENSION: ON, COEFICIENT=0.5
 END_PROBLEM_DEFINITION  
 $------------------------------------------------------------
 PROPERTIES
-  DENSITY=                  1.0e03
-  VISCOSITY=                1.0 
-  AIR_DENSITY=              1.0e04   
-  AIR_VISCOSITY=            1.0  
+  DENSITY=                  EXTERNAL
+  GAS_CONSTANT =            8.3144621
 END_PROPERTIES  
 $------------------------------------------------------------
 END_PHYSICAL_PROBLEM  
@@ -24,22 +26,22 @@ NUMERICAL_TREATMENT
   STABILIZATION:            ASGS
   ELEMENT_LENGTH:           MINIM
 $ TRACKING:                 TIME, ORDER:1, ITERA=40, TOLER=1.0e-08, RELAX=1.0, CONVE, NEWTO
-  TRACKING:                 TIME, ORDER:1
-  TIME_INTEGRATION:         Trapezoidal, ORDER: 1, EULER=200
-  SAFETY_FACTOR:            1000.0 
+$  TRACKING:                 TIME, ORDER:1
+  TIME_INTEGRATION:         Trapezoidal, ORDER: 1, EULER=10
+  SAFETY_FACTOR:            200.0 
   STEADY_STATE_TOLER:       -1e-10
   LINEARIZATION_METHOD:     Picard
-  MAXIMUM_NUMBER_OF_IT:     3
-  CONVERGENCE_TOLERANCE:    0.2e-1
+  MAXIMUM_NUMBER_OF_IT:     5
+  CONVERGENCE_TOLERANCE:    1e-5
   NORM_OF_RESIDUAL:         ALGEBRAIC
 
-  ASSEMBLY:                 CELL
+$$  ASSEMBLY:                 CELL
   ALGORITHM:                SCHUR
     SOLVER:                 ORTHOMIN, MOMEN
     PRECONDITIONER:         DT
     ELEMENT_LENGTH:         MINIMUM
     TAU_STRATEGY:           CODINA
-    CORRECTION:             OPEN
+$$    CORRECTION:             OPEN
   END_ALGORITHM
 
   HYDROSTATIC_STATE
@@ -71,11 +73,12 @@ END_OUTPUT_&_POST_PROCESS
 $------------------------------------------------------------
 BOUNDARY_CONDITIONS
   PARAMETERS
-    FIX_PRESSURE= On, ON_NODE=14221, VALUE=0.0 
-    HYDROSTATIC:  On  Y=2
-    INITIAL:      Constant, Value= 0.0, 0.00
+    FIX_PRESSURE= On, ON_NODE=1, VALUE=0.0 
+    HYDROSTATIC:  On  Z=2
+    INITIAL:      Constant, Value= 0.0, 0.00, 0.0
   END_PARAMETERS 
-  CODES, NODES, GEOMETRICAL
+  CODES, NODES
+     1   111  0.0 0.0 0.0
   END_CODES
 END_BOUNDARY_CONDITIONS  
 $------------------------------------------------------------

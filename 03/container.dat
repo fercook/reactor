@@ -1,24 +1,29 @@
 $-------------------------------------------------------------------
 RUN_DATA
-  ALYA:                   RISINGBUB
+  ALYA:                   2PHASEBUBBLE
   RUN_TYPE:               noCONTI , PRELIMINARY, FREQUENCY=40
-  LATEX_INFO_FILE:        Yes
+$$  LATEX_INFO_FILE:        Yes
   LIVE_INFORMATION:       Screen
   TIMING:                 ON
 END_RUN_DATA
 $-------------------------------------------------------------------
 PROBLEM_DATA
-  TIME_COUPLING:          GLOBAL, PRESCR
+  TIME_COUPLING:          GLOBAL, From_Critical
   TIME_INTERVAL=          0.0,100000000.0
   TIME_STEP_SIZE=         0.1
-  NUMBER_OF_STEPS=        1000
+  NUMBER_OF_STEPS=        100
   MAXIMUM_NUMBER_GLOBAL=  1 
-  BLOCK_ITERATION: 2
+  BLOCK_ITERATION: 3
      1 LEVELS
-     2 NASTIN
+     2 NASTIN, TEMPER
+     3 CHEMIC
   END_BLOCK_ITERATION
   NASTIN_MODULE:          On
   END_NASTIN_MODULE
+  TEMPER_PROBLEM=         On
+  END_TEMPER_MODULE
+  CHEMIC_PROBLEM=         On
+  END_CHEMIC_PROBLEM
   LEVELS_MODULE:          On
   END_LEVELS_MODULE
   PARALL_SERVICE:         On
