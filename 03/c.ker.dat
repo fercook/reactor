@@ -1,0 +1,30 @@
+$-------------------------------------------------------------------
+PHYSICAL_PROBLEM
+$  PROPERTIES
+$    MATERIAL=1
+$      DENSITY:    CONSTANT,  PARAMETERS = 1.0
+$      VISCOSITY:  CONSTANT,  PARAMETERS = 1.0
+$    END_MATERIAL
+$  END_PROPERTIES
+END_PHYSICAL_PROBLEM
+$-------------------------------------------------------------------
+NUMERICAL_TREATMENT    
+   MESH
+$   DIVISION=1
+   END_MESH
+   ELSEST
+     STRATEGY: BIN
+     NUMBER:   100,100,100
+     DATAF: LINKED_LIST
+   END_ELSEST
+END_NUMERICAL_TREATMENT  
+$------------------------------------------------------------
+OUTPUT_&_POST_PROCESS  
+$  ON_LAST_MESH
+   STEP_OVER=10
+$  POSTPROCESS NUMBERING
+$  POSTPROCESS GROUPS
+$  POSTPROCESS LNOCH
+END_OUTPUT_&_POST_PROCESS  
+$------------------------------------------------------------
+ 
