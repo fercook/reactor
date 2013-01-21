@@ -1,0 +1,22 @@
+
+
+Parsing vesselmixer.msh...
+
+Found some 3D elements, assuming a three dimensional geometry...
+WARNING: Automated boundary code detection...
+ Make sure you have ALL nodes (even non-boundary nodes) assigned to in physical entities in gmsh
+
+Detecting codes in bulk elements
+  Statistics
+  ----------
+      Total number of nodes: 34740
+      Total number of elements: 189884
+      Total number of boundaries: 12686
+      Total number of codes for boundaries: 4
+         Detected codes  /   Physical Entity:
+         --------------
+            1   "VesselTop"
+            2   "VesselBottom"
+            3   "VesselSides"
+            4   "Mixer"
+            5   "Bulk"

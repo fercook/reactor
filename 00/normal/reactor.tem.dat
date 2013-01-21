@@ -1,0 +1,63 @@
+$------------------------------------------------------------------------
+PHYSICAL_PROBLEM
+PROBLEM_DEFINITION
+  TEMPORAL_DERIVATIVES:   On
+  CONVECTIVE_TERM:        On
+  CONDUCTION_TERM:        On
+  TURBULENCE_MODEL:       Off 
+  REGIME , LOWMACH
+END_PROBLEM_DEFINITION
+$------------------------------------------------------------------------
+PROPERTIES:
+  GAS_CONSTANT = 8.3144621
+  DENSITY=                    EXTERNAL
+  LAW_SPECIFIC_HEAT=          EXTERNAL
+  LAW_THERMAL_COND=           EXTERNAL 
+  LAW_VISCOSITY=              EXTERNAL
+END_PROPERTIES
+$------------------------------------------------------------------------
+END_PHYSICAL_PROBLEM
+$------------------------------------------------------------------------
+NUMERICAL_TREATMENT
+  STABILIZATION:           ASGS
+  TAU_STRATEGY:            Codina
+  ELEMENT_LENGTH:          Minimum
+  SHOCK_CAPTURING=         Anisotropic, VALUE: 1.0  
+  TIME_INTEGRATION:        Trapezoidal, ORDER: 1, EULER=0
+  SAFETY_FACTOR=           100.0  
+  STEADY_STATE_TOLERANCE=  1e-8  
+  NORM_OF_CONVERGENCE:     L2   
+  MAXIMUM_NUMBER_OF_ITER=  5
+  RELAXATION_FACTOR=       1.0
+  CONVERGENCE_TOLERANCE=   1e-4  
+  ALGEBRAIC_SOLVER:        GMRES, ITERA=1000, TOLERANCE=1.0E-8, ADAPTIVE, RATIO=0.01, KRYLOV=50, UNSYMM, CONVERGENCE
+  PRECOND:                 DIAGONAL
+END_NUMERICAL_TREATMENT
+$------------------------------------------------------------------------
+OUTPUT_&_POST_PROCESS
+  POSTPROCESS INITIAL
+$  START_POSTPROCES_AT      STEP =1
+  POSTPROCESS TEMPER,      STEPS=50
+$  POSTPROCESS HEAT_FLUX,   STEPS=50
+$  POSTPROCESS RESIDUAL,    STEPS=1
+$  POSTPROCESS VELOCITY,    STEPS=1
+  BOUNDARY_SET
+  END_BOUNDARY_SET
+  ELEMENT_SET
+  END_ELEMENT_SET
+$  MATRIX = 1
+END_OUTPUT_&_POST_PROCESS
+$------------------------------------------------------------------------
+BOUNDARY_CONDITIONS
+ PARAMETERS
+ INITIAL, CONSTANT = 300.0 300.0 300.0
+ END_PARAMETERS
+  CODES, NODES
+$ Entrada
+    1    1 340.0
+    2    1 300.0
+   1 & 2 1 300.0
+END_CODES
+
+END_BOUNDARY_CONDITIONS
+$------------------------------------------------------------------------

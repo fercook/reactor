@@ -1,0 +1,26 @@
+$------------------------------------------------------------
+DIMENSIONS
+  include meshes/144K/reactor.dims.dat
+  SPACE_DIMENSIONS=               3
+  NODES=                          4
+  SKEW_SYSTEMS=            0
+  SLAVES=                  0
+END_DIMENSIONS
+$------------------------------------------------------------
+STRATEGY
+  INTEGRATION_RULE:          OPEN
+  DOMAIN_INTEGRATION_POINTS: 4
+END_STRATEGY
+$-------------------------------------------------------------
+GEOMETRY, GID
+   GROUPS = 20
+   INCLUDE  meshes/144K/reactor.geo.dat
+END_GEOMETRY
+$-------------------------------------------------------------
+SETS
+END_SETS
+$-------------------------------------------------------------
+BOUNDARY_CONDITIONS, EXTRAPOLATE
+  INCLUDE meshes/144K/reactor.fix.bou
+END_BOUNDARY_CONDITIONS
+$-------------------------------------------------------------

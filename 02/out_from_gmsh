@@ -1,0 +1,15 @@
+  Statistics
+  ----------
+      Total number of nodes: 9718
+      Total number of elements: 45743
+      Total number of boundaries: 8230
+      Total number of codes for boundaries: 5
+         Detected codes  /   Physical Entity:
+         --------------
+            1   "VesselTop"
+            2   "VesselBottom"
+            3   "VesselSides"
+            4   "Mixer"
+            5   "Stick"
+            6   "Bulk"
+

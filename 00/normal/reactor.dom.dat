@@ -1,0 +1,28 @@
+$------------------------------------------------------------
+DIMENSIONS
+  NODAL_POINTS=               4309
+  ELEMENTS=                   8392
+  SPACE_DIMENSIONS=               2
+  NODES=                          3
+  BOUNDARIES=              224
+  SKEW_SYSTEMS=            0
+  SLAVES=                  0
+END_DIMENSIONS
+$------------------------------------------------------------
+STRATEGY
+  INTEGRATION_RULE:          OPEN
+  DOMAIN_INTEGRATION_POINTS: 0
+END_STRATEGY
+$-------------------------------------------------------------
+GEOMETRY, GID
+   GROUPS = 20
+   INCLUDE reactor.geo.dat
+END_GEOMETRY
+$-------------------------------------------------------------
+SETS
+END_SETS
+$-------------------------------------------------------------
+BOUNDARY_CONDITIONS, EXTRAPOLATE
+  INCLUDE reactor.fix.bou
+END_BOUNDARY_CONDITIONS
+$-------------------------------------------------------------

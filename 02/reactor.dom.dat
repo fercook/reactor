@@ -1,0 +1,26 @@
+$------------------------------------------------------------
+DIMENSIONS
+  include vesselmixer.dims.dat
+  SPACE_DIMENSIONS=               3
+  NODES=                          4
+  SKEW_SYSTEMS=            0
+  SLAVES=                  0
+END_DIMENSIONS
+$------------------------------------------------------------
+STRATEGY
+  INTEGRATION_RULE:          OPEN
+  DOMAIN_INTEGRATION_POINTS: 4
+END_STRATEGY
+$-------------------------------------------------------------
+GEOMETRY, GID
+   GROUPS = 50
+   INCLUDE  vesselmixer.geo.dat
+END_GEOMETRY
+$-------------------------------------------------------------
+SETS
+END_SETS
+$-------------------------------------------------------------
+BOUNDARY_CONDITIONS, EXTRAPOLATE
+  INCLUDE vesselmixer.fix.bou
+END_BOUNDARY_CONDITIONS
+$-------------------------------------------------------------
