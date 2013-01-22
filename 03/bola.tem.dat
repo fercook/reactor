@@ -52,12 +52,12 @@ BOUNDARY_CONDITIONS
  PARAMETERS
  INITIAL, CONSTANT = 323.15 323.15 323.15
  END_PARAMETERS
-  CODES, NODES
+$  CODES, NODES
 $ Entrada
-    1    1 323.15
-    2    1 323.15
-   1 & 2 1 323.15
-END_CODES
+$    1    1 323.15
+$    2    1 323.15
+$   1 & 2 1 323.15
+$END_CODES
 
 END_BOUNDARY_CONDITIONS
 $------------------------------------------------------------------------

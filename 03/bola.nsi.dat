@@ -65,15 +65,9 @@ BOUNDARY_CONDITIONS
   PARAMETERS
      INITIAL:    Constant, Value= 0.0 0.0 0.0
     HYDROSTATIC:  On  Y=2
-     FIX_PRESSURE: On, ON_NODE=1, VALUE = 0.0
+     FIX_PRESSURE: On, ON_NODE=14221, VALUE = 0.0
   END_PARAMETERS
-  CODES, NODES 
-$ Paredes
-       1    11  0.0  0.0  0.0
-       2    11  0.0  0.0  0.0
-       3    11  0.0  0.0  0.0
-     1 & 2  11  0.0  0.0  0.0
-     2 & 3  11  0.0  0.0  0.0
+  CODES, NODES, GEOMETRICAL
   END_CODES
 
 END_BOUNDARY_CONDITIONS  
