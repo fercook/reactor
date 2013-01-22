@@ -1,0 +1,82 @@
+$------------------------------------------------------------------------
+PHYSICAL_PROBLEM
+PROBLEM_DEFINITION
+  MODEL:  COMBUSTION, STAGGERED
+  PROBLEM: REACTOR
+  TEMPORAL_DERIVATIVES:   On
+  CONVECTION:       ON, VELOC, CORRECTED
+  DIFFUSION:        ON
+  REACTION:         LHS
+  SOURCE:         REACTIONS 
+  SPECIES
+    TG
+    DG
+    MG
+    METH
+    GL
+    FAME
+  ENDSPECIES
+END_PROBLEM_DEFINITION
+$------------------------------------------------------------------------
+PROPERTIES:
+  GAS_CONSTANT=   8.3144621
+  NUMBER_OF_REACTIONS= 3
+  LAW_TEMPERATURE= TEMPER
+  LAW_DENSITY= EXTERNAL
+  LAW_DIFFUSION= PRANDTL
+$$$UNIFORM, PRANDTL = 0.71, LEWIS=1.0
+  SPECIES
+     include ../species.dat
+  END_SPECIES
+   REACTIONS, KINETICS  
+      TG  METH  ->  DG  FAME
+       1.43E11  0.0  104763.0  2.50E6   0.0  70976.0
+      DG  METH  ->  MG  FAME
+       1.83E10  0.0   92432.0  4.67E6   0.0  70657.0 
+      MG  METH  ->  GL  FAME
+       7.67E-5  0.0   12020.0  0.0      0.0      0.0
+  END_REACTIONS
+END_PROPERTIES
+$------------------------------------------------------------------------
+
+END_PHYSICAL_PROBLEM
+$------------------------------------------------------------------------
+NUMERICAL_TREATMENT
+  STABILIZATION:           ASGS
+  TAU_STRATEGY:            Codina
+  ELEMENT_LENGTH:          Minimum
+  SHOCK_CAPTURING=         ON, VALUE: 1.0  
+  TIME_INTEGRATION:        Trapezoidal, ORDER: 1, EULER=0
+  TIME_STRATEGY =          LOCAL
+  STAGGERED_TIME_STEP =    INITIAL_STEP=20, MAXIMUM_ITERATIONS=100000, FIXED_PT_TOLERANCE=1.0E-9, TOLERANCE=1.0E-6, DT_MINIMUM=1.0E-7
+  SAFETY_FACTOR=           1000.0
+  NEGATIVE_CONCENTRATION_STRATEGY = ON
+  STEADY_STATE_TOLERANCE=  -1e-8  
+  NORM_OF_CONVERGENCE:     L2   
+  MAXIMUM_NUMBER_OF_ITER=  3
+  intraspecies_iterations = 6
+  RELAXATION_FACTOR=       ON, PARAM=0.7
+  CONVERGENCE_TOLERANCE=   1e-4  
+  ALGEBRAIC_SOLVER:        GMRES, ITERA=1000, TOLERANCE=1.0E-8, ADAPTIVE, RATIO=0.001, KRYLOV=20, UNSYMM, CONVERGENCE
+  PRECOND:                 DIAGONAL
+END_NUMERICAL_TREATMENT
+$------------------------------------------------------------------------
+OUTPUT_&_POST_PROCESS
+  START_POSTPROCES_AT       STEP =0
+  POSTPROCESS CONCENTRATION,     STEPS=50
+  POSTPROCESS SOURCE_TERMS,     STEPS=50
+  BOUNDARY_SET
+  END_BOUNDARY_SET
+  ELEMENT_SET
+  END_ELEMENT_SET
+END_OUTPUT_&_POST_PROCESS
+$------------------------------------------------------------------------
+BOUNDARY_CONDITIONS
+ INITIAL
+    CONSTANT   TG=0.883721, METH=0.116279, FAME=0.0, DG=0.0, MG=0.0
+ END_INITIAL
+$ CODES, NODES, SPECIES = TG
+$ END_CODES
+END_BOUNDARY_CONDITIONS
+$$------------------------------------------------------------------------
+
