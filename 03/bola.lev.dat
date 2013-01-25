@@ -22,7 +22,7 @@ END_NUMERICAL_TREATMENT
 $------------------------------------------------------------------------
 OUTPUT_&_POST_PROCESS
   START_POSTPROCES_AT      STEP  = 0
-  POSTPROCESS LEVELSET,    STEPS = 100
+  POSTPROCESS LEVELSET,    STEPS = 1
   OUTPUT SOLVER
 END_OUTPUT_&_POST_PROCESS
 $------------------------------------------------------------------------
