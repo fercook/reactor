@@ -1,0 +1,27 @@
+$-------------------------------------------------------------------
+RUN_DATA
+  ALYA:                   go-solidz-go 
+  LIVE_INFO:              screen
+END_RUN_DATA
+$-------------------------------------------------------------------
+PROBLEM_DATA 
+  TIME_COUPLING:          Global, prescribed
+  TIME_INTERVAL=          0.0, 700.0
+  TIME_STEP_SIZE=         0.05
+  NUMBER_OF_STEPS=        100
+  ALEFOR_MODULE=          On
+     DELAY, STEPS=3
+  END_ALEFOR_MODULE
+  NASTIN_MODULE=          On
+  END_NASTIN_MODULE
+  LEVELS_MODULE=          On 
+  END_LEVELS_MODULE
+  PARALL_SERVICE:         ON
+    OUTPUT_FILE:          NO
+    POSTPROCESS:          MASTER
+  END_PARALL_SERVICE
+  BLOCK, 1
+    1 ALEFOR, LEVELS, NASTIN
+  END_BLOCK  
+END_PROBLEM_DATA
+$-------------------------------------------------------------------

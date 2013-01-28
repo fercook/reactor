@@ -1,0 +1,40 @@
+$-------------------------------------------------------------------
+PHYSICAL_PROBLEM
+    RIGID_BODY
+      SETS:     5
+      DENSITY=  42.0
+      FORCES:          GRAVITY
+      TRANSLATION: START  350000 3 200000
+      ROTATION: START  1000000 200000 1000000
+    END_RIGID_BODY
+END_PHYSICAL_PROBLEM
+$-------------------------------------------------------------------
+  NUMERICAL_TREATMENT 
+      RBTIM:         CRIST
+      FORCE:         ORDIN
+      DEFORMATION:           BOUNDARY, STEPS=1
+$      SMOOTHING:             STEPS=1, RELAXATION=1.0
+$      SMOOTHING:             GAUSS_SEIDEL, STEPS=5, RELAXATION=1.0
+      ALGEBRAIC_SOLVER:      DEFLATED_CG, ITERA=1000, TOLER=1.0e-10, CONVERGENCE, CSR
+      PRECONDITIONER:        DIAGONAL
+  END_NUMERICAL_TREATMENT 
+$-------------------------------------------------------------------
+OUTPUT_&_POST_PROCESS 
+  START_POSTPROCES_AT       STEP  = 0
+   POSTPROCESS DISPM, STEPS=2
+END_OUTPUT_&_POST_PROCESS  
+$-------------------------------------------------------------------
+BOUNDARY_CONDITIONS
+  CODES, NODES
+    1  11  0.000000 0.000000  
+    2  11  0.000000 0.000000  
+    3  11  0.000000 0.000000  
+    4  11  0.000000 0.000000  
+    1 & 2  11  0.000000 0.000000  
+    2 & 3  11  0.000000 0.000000  
+    4 & 3  11  0.000000 0.000000  
+    1 & 4  11  0.000000 0.000000  
+    5  11  0.000000 0.000000  
+  END_CODES 
+END_BOUNDARY_CONDITIONS
+$-------------------------------------------------------------------

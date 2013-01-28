@@ -1,0 +1,32 @@
+$------------------------------------------------------------
+PHYSICAL_PROBLEM
+$------------------------------------------------------------ 
+PROPERTIES
+  CONSTITUTIVE_MODEL: ALE_SOLID 
+END_PROPERTIES  
+$------------------------------------------------------------
+END_PHYSICAL_PROBLEM  
+$------------------------------------------------------------
+NUMERICAL_TREATMENT    
+  TIME_TREATMENT:     EXPLICIT
+  TIME_INTEGRATION:   NEWMARK
+  RAYLEIGH, RAYALPHA= 5.0
+  SAFETY_FACTOR=      0.6
+$------------------------------------------------------------
+END_NUMERICAL_TREATMENT  
+$------------------------------------------------------------
+OUTPUT_&_POST-PROCESS  
+ POSTPROCESS DISPLACEMENT, STEPS=5
+ POSTPROCESS VELOCITY,     STEPS=5
+ POSTPROCESS ACCELERATION, STEPS=5
+END_OUTPUT_&_POST_PROCESS  
+$------------------------------------------------------------
+BOUNDARY_CONDITIONS, TRANSIENT   
+  CODES, NODES
+       1      11   0.0  0.0 
+       2      11   0.0  0.0
+  END_CODES
+$------------------------------------------------------------
+END_BOUNDARY_CONDITIONS  
+$------------------------------------------------------------
+
