@@ -7,11 +7,11 @@ RUN_DATA
 END_RUN_DATA
 $-------------------------------------------------------------------
 PROBLEM_DATA
-  TIME_COUPLING:          Global, From_Critical
+  TIME_COUPLING:          Global, Prescribed
   TIME_INTERVAL =         0.0, 1000.0
-  TIME_STEP_SIZE  =       5.0
+  TIME_STEP_SIZE  =       0.1
   MAXIMUM_NUMBER_GLOBAL=  1
-  NUMBER_OF_STEPS=        200
+  NUMBER_OF_STEPS=        2000
   BLOCK, 3
     1 LEVELS
     2 TEMPER NASTIN
