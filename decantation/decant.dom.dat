@@ -1,0 +1,35 @@
+$------------------------------------------------------------
+DIMENSIONS
+  NODAL_POINTS=        14889
+  ELEMENTS=            29296
+  SPACE_DIMENSIONS=        2
+  TYPES_OF_ELEMENTS=       TRI03
+  BOUNDARIES=         480
+END_DIMENSIONS
+$------------------------------------------------------------
+STRATEGY
+  INTEGRATION_RULE:          Open  
+  DOMAIN_INTEGRATION_POINTS: 1  
+END_STRATEGY
+$-------------------------------------------------------------
+GEOMETRY
+  GROUPS=650
+  INCLUDE  decant.geo.dat
+END_GEOMETRY  
+$-------------------------------------------------------------
+SETS
+  BOUNDARIES
+    INCLUDE  decant.fix  
+  END_BOUNDARIES
+END_SETS
+$-------------------------------------------------------------
+BOUNDARY_CONDITIONS
+  ON_BOUNDARIES
+    INCLUDE  decant.fix 
+  END_ON_BOUNDARIES
+  GEOMETRICAL_CONDITIONS
+      WALL:     7
+$    ANGLE,   GEOAN=170.0
+  END_GEOMETRICAL_CONDITIONS
+END_BOUNDARY_CONDITIONS
+$-------------------------------------------------------------
