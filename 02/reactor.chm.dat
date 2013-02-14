@@ -44,6 +44,7 @@ $------------------------------------------------------------------------
 END_PHYSICAL_PROBLEM
 $------------------------------------------------------------------------
 NUMERICAL_TREATMENT
+  COUPLING:   MONOLITHIC
   STABILIZATION:           ASGS
   TAU_STRATEGY:            Codina
   ELEMENT_LENGTH:          Minimum
