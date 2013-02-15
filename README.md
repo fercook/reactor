@@ -10,3 +10,5 @@ Test  Description
 01    Container with hot walls, chemistry included
 02    Container with hot walls, stirrer at 60 rpm
 03    Small phase 1 bubble inside phase 2 liquid, test the coupling btw Chemic and Level Set
+04    Two bubbles one rises faster than then other and merge
+05    Decantation TG on top, METHA on bottom, see if I can make levels simulate decantation
