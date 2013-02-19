@@ -7,14 +7,15 @@ PROBLEM_DEFINITION
   CONVECTION:       ON, VELOC, CORRECTED
   DIFFUSION:        ON
   REACTION:         LHS
-  SOURCE:         REACTIONS 
+  SOURCE:         REACTIONS
+  ACTIVITIES:       ON 
   SPECIES
     TG
     DG
     MG
+    FAME
     METH
     GL
-    FAME
   ENDSPECIES
 END_PROBLEM_DEFINITION
 $------------------------------------------------------------------------
@@ -35,7 +36,15 @@ $$$UNIFORM, PRANDTL = 0.71, LEWIS=1.0
        1.83E10  0.0   92432.0  4.67E6   0.0  70657.0 
       MG  METH  ->  GL  FAME
        7.67E-5  0.0   12020.0  0.0      0.0      0.0
-  END_REACTIONS
+  END_REACTION
+  INTERACTION
+      TG=    DG=0.0  MG=0.0  FAME=-50.69 METH=134.32 GL=475.16
+      DG=    TG=0.0  MG=0.0  FAME=-50.69 METH=134.32 GL=475.16
+      MG=    TG=0.0  DG=0.0  FAME=-50.69 METH=134.32 GL=475.16
+      FAME=  TG=209.5  DG=209.5  MG=209.5  METH=154.8 GL=723.52
+      METH=  TG=804.46  DG=804.46 MG=804.46  FAME=209.8 GL=89.54
+      GL=    TG=-94.11  DG=-94.11  MG=-94.11  FAME=-69.24 METH=-187.58 
+  END_INTERACTIONS
 END_PROPERTIES
 $------------------------------------------------------------------------
 

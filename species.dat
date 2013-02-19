@@ -12,7 +12,7 @@ TYPE = TG
    CP_RANGES = 1
      1.0   6000.0 1870.0  0.0 0.0 0.0 0.0 0.0 0.0 0.0
    END_CP
-   ACTIVITY  0.1   0.9
+   ACTIVITY:  R=38.49,  Q=31.18
 END_TYPE
 
 $
@@ -28,7 +28,7 @@ TYPE = MG
    CP_RANGES = 1
      100.0   6000.0 1870.0  0.0 0.0 0.0 0.0 0.0 0.0 0.0
    END_CP
-   ACTIVITY  1.0   1.0
+   ACTIVITY:  R=38.49,  Q=31.18
 END_TYPE
 $
 $
@@ -43,7 +43,7 @@ TYPE = DG
    CP_RANGES = 1
      100.0   6000.0 1870.0  0.0 0.0 0.0 0.0 0.0 0.0 0.0
    END_CP
-   ACTIVITY  1.0   1.0
+   ACTIVITY:  R=38.49,  Q=31.18
 END_TYPE
 $
 $
@@ -61,7 +61,7 @@ TYPE = GL
    CP_RANGES = 1, MOLAR
      100.0   600.0 137.654 318.402 -112.55 0.0 0.0 0.0 -54.19904 0.0
    END_CP
-   ACTIVITY  0.99   0.01
+   ACTIVITY:  R=4.8,  Q=4.91
 END_TYPE
 $
 $
@@ -76,7 +76,7 @@ TYPE = METH
    CP_RANGES = 1
      1.0   6000.0 2620.0  0.0 0.0 0.0 0.0 0.0 -24.373 0.0
    END_CP
-   ACTIVITY  0.9   0.1
+   ACTIVITY:  Q=1.43,  R=1.43
 END_TYPE
 $
 $
@@ -91,7 +91,7 @@ TYPE = FAME
    CP_RANGES = 1
      100.0   6000.0 1870.0  0.0 0.0 0.0 0.0 0.0 0.0 0.0
    END_CP
-   ACTIVITY  1.0   1.0
+   ACTIVITY  R=38.49,  Q=31.18
 END_TYPE
 
 $
@@ -107,7 +107,7 @@ TYPE = CAT
    CP_RANGES = 1
      1.0   6000.0 2620.0  0.0 0.0 0.0 0.0 0.0 -24.373 0.0
    END_CP
-   ACTIVITY  0.9   0.1
+   ACTIVITY  R=0.9   Q=0.1
 END_TYPE
 
 
